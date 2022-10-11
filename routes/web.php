@@ -22,6 +22,7 @@ Route::middleware('auth')
         route::get('/', 'HomeController@index')
         ->name('home');
         route::resource('posts', 'PostController');
+        route::resource('categories', 'CategoryController');
 });
 
 Route::get('{any?}', function() {

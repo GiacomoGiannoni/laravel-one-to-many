@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
@@ -42,7 +43,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'content' => 'required|max:65535',
-            'category_id' => 'nullable|exist:categories,id',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
         $data = $request->all();
 
@@ -77,7 +78,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -90,7 +92,8 @@ class PostController extends Controller
     public function update(Request $request, Post $post) {
         $request->validate([
             'title' => 'required|max:255',
-            'content' => 'required|max:65535'
+            'content' => 'required|max:65535',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
         $data = $request->all();
         if ($post->title !== $data['title']) {

@@ -32,9 +32,15 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.posts.index') }}">gestione Post</a>
+                            <a class="nav-link" href="{{ route('admin.posts.index') }}">Gestione Post</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.categories.index') }}">Gestione Categorie</a>
                         </li>
                     </ul>
 
